@@ -5,10 +5,10 @@ from .models import Task, Review
 
 # Create your views here.
 def home(request):
-    query_all = Task.objects.all()
+    query_single = Task.objects.get(id=3)
 
     context = {
-        "tasks": query_all
+        "task": query_single
     }
 
     return render(request, "index.html", context=context)
