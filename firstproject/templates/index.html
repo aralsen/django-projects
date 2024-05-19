@@ -8,11 +8,13 @@
 <body>
     <h2>This is my website</h2>
     <h4> Hello World!</h4>
-    {{name}}
-    {% if name == 'Aral' %}
-        <p>Hello Aral!</p>
-    {% else %}
-        <p>Hello stranger!</p>
-    {% endif %}
+    {% for cl in clients %}
+        <p> {{cl.id}} </p>
+        <br>
+        <p>{{cl.name}}</p>
+        <br>
+        <p>{{cl.profession}}</p>
+        <br>
+    {% endfor %}
 </body>
 </html>
