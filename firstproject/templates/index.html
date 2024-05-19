@@ -7,10 +7,8 @@
 </head>
 <body>
     <h2>This is my website</h2>
-        <p>{{ task.id }}</p>
-        <p>{{ task.title }}</p>
-        <p>{{ task.content }}</p>
-        <br>
-        <hr>
+    <a href="{% url 'create-task' %}">Create a task</a>
+    <br><br>
+    <a href="{% url 'view-tasks' %}">View tasks</a>
 </body>
 </html>
