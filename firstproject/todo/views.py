@@ -4,7 +4,9 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    return render(request, "index.html")
+    name = "GUEST"
+    context = {'name': name}
+    return render(request, "index.html", context=context)
 
 
 def register(request):
