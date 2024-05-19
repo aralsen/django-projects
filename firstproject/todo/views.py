@@ -1,19 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Task, Review
 
 
 # Create your views here.
 def home(request):
-    clients = [
-        {'id': 1, 'name': 'John Doe', 'profession': 'Web Developer'},
-        {'id': 2, 'name': 'Jane Doe', 'profession': 'Data Scientist'},
-        {'id': 3, 'name': 'Jim Doe', 'profession': 'Software Engineer'},
-        {'id': 4, 'name': 'Jill Doe', 'profession': 'DevOps Engineer'},
-        {'id': 5, 'name': 'Jack Doe', 'profession': 'Network Engineer'},
-    ]
+    query_all = Task.objects.all()
 
     context = {
-        'clients': clients
+        "tasks": query_all
     }
 
     return render(request, "index.html", context=context)

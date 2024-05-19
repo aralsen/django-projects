@@ -7,14 +7,12 @@
 </head>
 <body>
     <h2>This is my website</h2>
-    <h4> Hello World!</h4>
-    {% for cl in clients %}
-        <p> {{cl.id}} </p>
+    {% for task in tasks %}
+        <p>{{ task.id }}</p>
+        <p>{{ task.title }}</p>
+        <p>{{ task.content }}</p>
         <br>
-        <p>{{cl.name}}</p>
-        <br>
-        <p>{{cl.profession}}</p>
-        <br>
+        <hr>
     {% endfor %}
 </body>
 </html>
