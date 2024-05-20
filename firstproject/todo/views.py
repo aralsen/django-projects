@@ -1,6 +1,9 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-from .forms import TaskForm, CreateUserForm
+from .forms import TaskForm, CreateUserForm, LoginForm
+from django.contrib.auth.models import auth
+from django.contrib.auth import authenticate
 from .models import Task
 
 
@@ -24,7 +27,22 @@ def register(request):
 
 
 def login(request):
-    return render(request, "login.html")
+    form = LoginForm()
+
+    if request.method == "POST":
+        form = LoginForm(request, data=request.POST)
+        if form.is_valid():
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+                return HttpResponse("Logged in")
+
+    context = {"form": form}
+
+    return render(request, "login.html", context=context)
 
 
 def create_task(request):
