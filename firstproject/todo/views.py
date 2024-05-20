@@ -12,6 +12,10 @@ def home(request):
     return render(request, "index.html")
 
 
+def dashboard(request):
+    return render(request, "dashboard.html")
+
+
 def register(request):
     form = CreateUserForm()
 
@@ -38,11 +42,16 @@ def login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
-                return HttpResponse("Logged in")
+                return redirect("dashboard")
 
     context = {"form": form}
 
     return render(request, "login.html", context=context)
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect("")
 
 
 def create_task(request):
