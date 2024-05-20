@@ -10,7 +10,9 @@
 <body>
     <h2>My Website</h2>
     <image src="{% static 'images/cat.png' %}"></image>
-        <br><br>
+    <br><br>
+    <a href="{% url 'register' %}">Register a User</a>
+    <br><br><br><br>
     <a href="{% url 'create-task' %}">Create Task</a>
     <br><br>
     <a href="{% url 'view-tasks' %}">View Tasks</a>

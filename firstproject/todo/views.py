@@ -1,7 +1,6 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-from .forms import TaskForm
+from .forms import TaskForm, CreateUserForm
 from .models import Task
 
 
@@ -11,7 +10,17 @@ def home(request):
 
 
 def register(request):
-    return render(request, "register.html")
+    form = CreateUserForm()
+
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("login")
+
+    context = {"form": form}
+
+    return render(request, "register.html", context=context)
 
 
 def login(request):
