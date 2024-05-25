@@ -1,0 +1,26 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title> Taskly </title>
+</head>
+{% include 'base.html' %}
+<br>
+<div class="container bg-white shadow-md p-3 mt-5 form-layout">
+    <h3>This is our registration page</h3>
+    <hr>
+    <br>
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <input type="submit" value="Submit" class="btn btn-outline-primary"/>
+    </form>
+</div>
+<br>
+</html>

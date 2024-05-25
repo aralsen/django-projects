@@ -1,0 +1,10 @@
+h2 {
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.form-layout {
+    border-radius: 10px;
+    width: 500px;
+}
