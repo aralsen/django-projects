@@ -10,7 +10,7 @@
     <title>Taskly - Login</title>
 </head>
 <body>
-{% include 'base.html' %}
+{% include 'pre-base.html' %}
 <div class="container mt-5">
     <div class="card">
         <div class="card-header">
@@ -21,9 +21,11 @@
                 {% csrf_token %}
                 {{ form.username|as_crispy_field }}
                 {{ form.password|as_crispy_field }}
-                <input type="submit" value="Submit" class="btn btn-outline-primary"/>
-                <a href="/register" class="btn btn-link">Register</a>
+                <input type="submit" value="Login" class="btn btn-outline-primary"/>
             </form>
+            <div class="mt-3">
+                <p>Don't have an account? <a href="/register" class="btn btn-link">Register</a></p>
+            </div>
         </div>
     </div>
 </div>

@@ -9,7 +9,7 @@
     <title>Taskly - View Tasks</title>
 </head>
 <body>
-{% include 'base.html' %}
+{% include 'profile/base.html' %}
 <div class="container mt-5">
     <h3 class="text-center">My Tasks</h3>
     <hr>
@@ -20,8 +20,8 @@
             </div>
             <div class="card-body">
                 <p class="card-text">{{ tsk.content }}</p>
-                <a href="{% url 'update-task' tsk.id %}" class="btn btn-primary">Update</a>
-                <a href="{% url 'delete-task' tsk.id %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'update-task' tsk.id %}" class="btn btn-outline-info">Update</a>
+                <a href="{% url 'delete-task' tsk.id %}" class="btn btn-outline-danger">Delete</a>
             </div>
         </div>
     {% endfor %}

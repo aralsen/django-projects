@@ -10,7 +10,7 @@
     <title>Taskly - Update Task</title>
 </head>
 <body>
-{% include 'base.html' %}
+{% include 'profile/base.html' %}
 <div class="container mt-5">
     <div class="card">
         <div class="card-header">
@@ -21,7 +21,7 @@
                 {% csrf_token %}
                 {{ form.title|as_crispy_field }}
                 {{ form.content|as_crispy_field }}
-                <input type="submit" value="Submit" class="btn btn-primary"/>
+                <input type="submit" value="Update" class="btn btn-primary"/>
             </form>
         </div>
     </div>
