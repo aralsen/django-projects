@@ -11,8 +11,12 @@
 {% include 'base.html' %}
 <br>
 <div class="container bg-white shadow-md p-3 mt-5 form-layout">
-    <h3>This is our dashboard page!</h3>
-    <br>
+    <h3 class="text-center">This is our dashboard page!</h3>
+    <hr>
+    <a href="{% url 'create-task' %}">Create task</a>
+    <br> <br>
+    <a href="{% url 'view-tasks' %}">View tasks</a>
+    <br> <br>
     <a href="{% url 'logout' %}">Logout</a>
 </div>
 <br>

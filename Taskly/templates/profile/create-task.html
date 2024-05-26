@@ -7,22 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>Taskly - Login</title>
+    <title>Taskly - Create Task</title>
 </head>
 <body>
 {% include 'base.html' %}
 <div class="container mt-5">
     <div class="card">
         <div class="card-header">
-            <h3>Login</h3>
+            <h3>Create a task</h3>
         </div>
         <div class="card-body">
             <form method="POST" autocomplete="off">
                 {% csrf_token %}
-                {{ form.username|as_crispy_field }}
-                {{ form.password|as_crispy_field }}
+                {{ form.title|as_crispy_field }}
+                {{ form.content|as_crispy_field }}
                 <input type="submit" value="Submit" class="btn btn-outline-primary"/>
-                <a href="/register" class="btn btn-link">Register</a>
             </form>
         </div>
     </div>
