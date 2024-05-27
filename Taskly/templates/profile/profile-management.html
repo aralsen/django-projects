@@ -14,6 +14,21 @@
 <div class="container mt-5">
     <div class="card">
         <div class="card-header">
+            <h3>Update Your Profile Picture</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form_2 }}
+                <br> <br>
+                <input type="submit" value="Update" class="btn btn-outline-primary"/>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
             <h3>Update your profile</h3>
         </div>
         <div class="card-body">

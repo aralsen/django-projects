@@ -4,8 +4,8 @@ from django.contrib.auth.models import auth, User
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from .forms import CreateUserForm, LoginForm, CreateTaskForm, UpdateUserForm
-from .models import Task
+from .forms import CreateUserForm, LoginForm, CreateTaskForm, UpdateUserForm, UpdateProfileForm
+from .models import Task, Profile
 
 
 # Create your views here.
@@ -15,7 +15,9 @@ def home(request):
 
 @login_required(login_url="login")
 def dashboard(request):
-    return render(request, "profile/dashboard.html")
+    profile = Profile.objects.get(user=request.user)
+    context = {"profile": profile}
+    return render(request, "profile/dashboard.html", context=context)
 
 
 def register(request):
@@ -24,7 +26,9 @@ def register(request):
     if request.method == "POST":
         form = CreateUserForm(request.POST)
         if form.is_valid():
+            user = form.save(commit=False)
             form.save()
+            profile = Profile.objects.create(user=user)
             messages.success(request, "Account created successfully")
             return redirect("login")
 
@@ -112,21 +116,27 @@ def delete_task(request, pk):
 
 @login_required(login_url="login")
 def profile_management(request):
+    form = UpdateUserForm(instance=request.user)
+    profile = Profile.objects.get(user=request.user)
+    form_2 = UpdateProfileForm(instance=profile)
+
     if request.method == "POST":
         form = UpdateUserForm(request.POST, instance=request.user)
+        form_2 = UpdateProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             return redirect("dashboard")
+        if form_2.is_valid():
+            form_2.save()
+            return redirect("dashboard")
 
-    form = UpdateUserForm(instance=request.user)
-    context = {"form": form}
+    context = {"form": form, "form_2": form_2}
 
     return render(request, "profile/profile-management.html", context=context)
 
 
 @login_required(login_url="login")
 def delete_account(request):
-
     if request.method == "POST":
         user = User.objects.get(id=request.user.id)
         user.delete()
