@@ -23,11 +23,20 @@
                 {{ form.password|as_crispy_field }}
                 <input type="submit" value="Login" class="btn btn-outline-primary"/>
             </form>
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="alert alert-success alert-fixed">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
             <div class="mt-3">
                 <p>Don't have an account? <a href="/register" class="btn btn-link">Register</a></p>
             </div>
         </div>
     </div>
 </div>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
 </body>
 </html>

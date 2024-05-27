@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import auth, User
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 from .forms import CreateUserForm, LoginForm, CreateTaskForm, UpdateUserForm
 from .models import Task
@@ -24,6 +25,7 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Account created successfully")
             return redirect("login")
 
     context = {"form": form}
