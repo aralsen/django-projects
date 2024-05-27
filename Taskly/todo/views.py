@@ -1,9 +1,9 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import auth
+from django.contrib.auth.models import auth, User
 from django.shortcuts import render, redirect
 
-from .forms import CreateUserForm, LoginForm, CreateTaskForm
+from .forms import CreateUserForm, LoginForm, CreateTaskForm, UpdateUserForm
 from .models import Task
 
 
@@ -106,3 +106,28 @@ def delete_task(request, pk):
         return redirect("view-tasks")
 
     return render(request, "profile/delete-task.html")
+
+
+@login_required(login_url="login")
+def profile_management(request):
+    if request.method == "POST":
+        form = UpdateUserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect("dashboard")
+
+    form = UpdateUserForm(instance=request.user)
+    context = {"form": form}
+
+    return render(request, "profile/profile-management.html", context=context)
+
+
+@login_required(login_url="login")
+def delete_account(request):
+
+    if request.method == "POST":
+        user = User.objects.get(id=request.user.id)
+        user.delete()
+        return redirect("")
+
+    return render(request, "profile/delete-account.html")
