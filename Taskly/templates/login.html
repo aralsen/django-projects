@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>Taskly - Login</title>
 </head>
@@ -21,12 +22,12 @@
                 {% csrf_token %}
                 {{ form.username|as_crispy_field }}
                 {{ form.password|as_crispy_field }}
-                <input type="submit" value="Login" class="btn btn-outline-primary"/>
+                <button type="submit" class="btn btn-outline-primary">Login</button>
             </form>
             {% for message in messages %}
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
                     <div class="alert alert-success alert-fixed">
-                        {{ message }}
+                        <i class="fa fa-check" aria-hidden="true"></i> &nbsp; {{ message }}
                     </div>
                 {% endif %}
             {% endfor %}
