@@ -2,12 +2,12 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms.widgets import PasswordInput, TextInput
 from django import forms
-from captcha.fields import CaptchaField
+from django_recaptcha.fields import ReCaptchaField
 from .models import Task, Profile
 
 
 class CreateUserForm(UserCreationForm):
-    captcha = CaptchaField()
+    captcha = ReCaptchaField()
 
     class Meta:
         model = User
