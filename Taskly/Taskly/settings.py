@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "todo.apps.TodoConfig",
     'crispy_forms',
     'crispy_bootstrap5',
+    'captcha',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
