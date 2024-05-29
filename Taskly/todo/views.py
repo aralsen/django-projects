@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import auth, User
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django_ratelimit.decorators import ratelimit
 
 from .forms import CreateUserForm, LoginForm, CreateTaskForm, UpdateUserForm, UpdateProfileForm
 from .models import Task, Profile
@@ -20,6 +21,7 @@ def dashboard(request):
     return render(request, "profile/dashboard.html", context=context)
 
 
+@ratelimit(key='user_or_ip', rate='10/m')
 def register(request):
     form = CreateUserForm()
 
@@ -62,6 +64,7 @@ def logout(request):
 
 
 @login_required(login_url="login")
+@ratelimit(key='user_or_ip', rate='30/m')
 def create_task(request):
     form = CreateTaskForm()
 
@@ -88,6 +91,7 @@ def view_tasks(request):
 
 
 @login_required(login_url="login")
+@ratelimit(key='user_or_ip', rate='50/m')
 def update_task(request, pk):
     task = Task.objects.get(id=pk)
     form = CreateTaskForm(instance=task)
