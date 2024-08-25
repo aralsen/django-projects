@@ -1,56 +1,88 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-    <title> Taskly </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taskly - Modern Task Management</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-        <a class="navbar-brand main-heading">
-            &nbsp; Taskly
-        </a>
-        <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto">
-                &nbsp;     &nbsp;     &nbsp;
-                <li class="nav-item">
-                    <a class="btn btn-primary navbar-btn" type="button" href="{% url 'register' %}">Register</a>
-                </li>
-                &nbsp;     &nbsp;     &nbsp;
-                <li class="nav-item">
-                    <a class="btn btn-primary navbar-btn" type="button" href="{% url 'login' %}">Login</a>
-                </li>
-                &nbsp;     &nbsp;     &nbsp;
-            </ul>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-tasks"></i> Taskly
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary me-2" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{% url 'register' %}">Register</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-    <br>
-    <body>
-        <br><br>
-        <div class="text-center">
-            <h3> Taskly.... A home for your tasks. </h3>
-            <br>
-            <a class="btn btn-outline-primary" type="button" href="{% url 'register' %}">Register</a>
+    <header class="hero bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Welcome to Taskly</h1>
+            <p class="lead">Your modern solution for efficient task management</p>
+            <a href="{% url 'register' %}" class="btn btn-light btn-lg">Get Started</a>
         </div>
-    </body>
-<br>
-<script src="{% static 'js/app.js' %}"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous">
-</script>
+    </header>
+    <section class="features py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Why Choose Taskly?</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-check-circle fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Easy Task Creation</h5>
+                            <p class="card-text">Quickly add and organize your tasks with our intuitive interface.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-users fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Collaboration</h5>
+                            <p class="card-text">Share tasks and work together with your team seamlessly.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-mobile-alt fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Mobile Friendly</h5>
+                            <p class="card-text">Access your tasks on-the-go with our responsive design.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cta bg-light py-5 text-center">
+        <div class="container">
+            <h2 class="mb-4">Ready to boost your productivity?</h2>
+            <a href="{% url 'register' %}" class="btn btn-primary btn-lg">Sign Up Now</a>
+        </div>
+    </section>
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2024 Taskly. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
 </html>

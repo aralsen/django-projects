@@ -1,19 +1,23 @@
-h2 {
-    color: #000000;
-    font-size: 24px;
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar-brand {
     font-weight: bold;
 }
 
-.form-layout {
-    border-radius: 10px;
-    width: 500px;
+.hero {
+    background-image: linear-gradient(45deg, #007bff, #6610f2);
 }
 
-.alert-fixed {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1050;
-    display: none;
+.features .card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.features .card:hover {
+    transform: translateY(-5px);
+}
+
+.cta {
+    background-color: #f8f9fa;
 }
